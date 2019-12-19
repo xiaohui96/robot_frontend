@@ -1,0 +1,68 @@
+{
+  "labmenudata": [
+    {
+      "key": "complicatedSystem",
+      "title": "复杂系统实验室",
+      "menuItem": [
+        {"key":"ballPlate","text":"板球系统"},
+        {"key":"ballBeam","text":"球杆系统"},
+        {"key":"WPT","text":"无线电能传输"},
+        {"key":"magneticLevitation","text":"磁悬浮系统"},
+        {"key":"twoDofHover","text":"二自由度飞行器"},
+        {"key":"threeDofHover","text":"三自由度飞行器"},
+        {"key":"selfBalancingRobot","text":"自平衡小车"}
+      ]
+    },
+    {
+      "key": "processControl",
+      "title": "过程控制系统",
+      "menuItem": [
+        {"key":"realTank","text":"真实水箱"},
+        {"key":"virtualTank","text":"虚拟水箱"},
+        {"key":"singleTank","text":"单容水箱"},
+        {"key":"doubleTank","text":"双容水箱"},
+        {"key":"tripleTank","text":"三容水箱"},
+        {"key":"cascadeDoubleTank","text":"串级双容水箱"}
+      ]
+    },
+    {
+      "key": "fanControl",
+      "title": "风扇控制实验室",
+      "menuItem": [
+        {"key":"fan1","text":"风扇1"},
+        {"key":"fan2","text":"风扇2"},
+        {"key":"fan3","text":"风扇3"},
+        {"key":"fan4","text":"风扇4"},
+        {"key":"fan5","text":"风扇5"}
+      ]
+    },
+    {
+      "key": "invertedPendulum",
+      "title": "倒立摆系统实验室",
+      "menuItem": [
+        {"key":"L1IP","text":"线性一阶倒立摆"},
+        {"key":"L2IP","text":"线性二阶倒立摆"},
+        {"key":"R1IP","text":"环形一阶倒立摆"},
+        {"key":"R2IP","text":"环形二阶倒立摆"}
+      ]
+    },
+    {
+      "key": "servoSystem",
+      "title": "伺服系统实验室",
+      "menuItem": [
+        {"key":"torqueMotor","text":"力矩电机"},
+        {"key":"DCMotor","text":"直流电机"},
+        {"key":"AsynMotor","text":"异步电机"},
+        {"key":"steppingMotor","text":"步进电机"}
+      ]
+    },
+    {
+      "key": "newLab",
+      "title": "新型实验室",
+      "menuItem": [
+        {"key":"threeSatellite","text":"三卫星模型"},
+        {"key":"car","text":"小车系统"}
+      ]
+    }
+  ]
+}

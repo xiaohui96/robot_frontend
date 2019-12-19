@@ -1,0 +1,23 @@
+//页面布局
+@small-gap: 8px;
+@middle-gap: 16px;
+@big-gap: 24px;
+@large-gap: 32px;
+
+#system-config {
+  .ant-card {
+    &:not(:first-child){
+      margin: @big-gap 0px 0px 0px;
+    }
+
+    //卡片
+    &-head{
+      padding: 0 @big-gap;
+    }
+
+    &-body{
+      padding: @big-gap;
+    }
+
+  }
+}

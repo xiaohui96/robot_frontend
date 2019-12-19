@@ -1,0 +1,108 @@
+@import './custom.less';
+
+@content7: content7;
+.@{content7}-wrapper {
+  height: 800px;
+  .@{content7} {
+    &-text {
+      width: 35%;
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      top: 6%;
+      left: 5%;
+      //& > *.queue-anim-leaving {
+      //  position: relative !important;
+      //}
+      & > h1 {
+        position: relative;
+      }
+      //& > p {
+      //  position: relative;
+      //  margin-top: 10px;
+      //}
+
+
+      //& ul {
+      //  position: relative;
+      //  margin-top: 10%;
+      //  display: inline-block;
+      //  & li {
+      //    margin-top: 8%;
+      //    width:940px;
+          //& span {
+          //  display: inline-block;
+          //  width: 100px;
+          //  height: 100px;
+          //  position: absolute;
+          //
+          //}
+          //& h2, & p {
+          //  margin-left: 45px;
+          //}
+          //& h2 {
+          //  font-size: 14px;
+          //  margin-bottom: 10px;
+          //}
+      //  }
+      //}
+    }
+    //&-img {
+    //  width: 50%;
+    //  display: inline-block;
+    //  position: relative;
+    //  float: right;
+    //  top: 15%;
+    //  right: 5%;
+    //}
+
+    .ant-carousel .slick-slide {
+      text-align: center;
+      //width:250px;
+      //height:200px;
+      line-height: 160px;
+      background: rgba(149, 176, 188, 0.4);
+      overflow: hidden;
+    }
+
+    .ant-carousel .slick-slide h3 {
+      //width:250px;
+      //height:200px;
+      color: #fff;
+      display: inline-block;
+      vertical-align: middle;}
+
+
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .@{content7}-wrapper {
+    height: 800px;
+    overflow: hidden;
+    .@{content7} {
+      width: 90%;
+      max-width: 100%;
+      &-img, &-text {
+        display: block;
+        width: 100%;
+        top: auto;
+        left: auto;
+        right: auto;
+      }
+      &-text {
+        height: 430px;
+        > h1 {
+          margin: 40px auto 20px;
+          font-size: 24px;
+        }
+        //> h1, > p {
+        //  text-align: center;
+        //}
+      }
+      //&-img {
+      //  margin-top: 20px;
+      //}
+    }
+  }
+}

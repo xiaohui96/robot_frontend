@@ -1,0 +1,132 @@
+@import "~antd/lib/style/themes/default.less";
+
+#root {
+  .auth-content {
+    padding-top: 150px;
+  }
+  .auth-panel {
+    background-color: rgb(240, 242, 245);
+    width: 450px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    .tips {
+      margin-bottom: 16px;
+    }
+
+    .ant-card-body {
+      padding: 24px 36px 36px;
+
+      input {
+        height: 40px;
+      }
+
+      .auth-login-form {
+        input {
+          padding-left: 40px;
+        }
+        .ant-form-item:nth-last-child(2) {
+          margin-bottom: 8px;
+        }
+      }
+
+      .ant-regist-form {
+        .ant-form-item:nth-last-child(2) {
+          margin-bottom: 8px;
+        }
+      }
+
+      h1.auth-title {
+        text-align: center;
+        margin-top: 16px;
+        margin-bottom: 32px;
+        span {
+          vertical-align: middle;
+          margin-left: 6px;
+        }
+      }
+
+      .auth-href-forgot {
+        float: left;
+      }
+
+      .auth-href-regist {
+        float: right;
+      }
+
+      .auth-href-login {
+        text-align: center;
+      }
+
+      .auth-form-button {
+        height: 40px;
+        width: 100%;
+      }
+
+      .auth-footer {
+        text-align: center;
+      }
+
+      .ant-form-explain {
+        margin-top: 3px;
+        margin-bottom: 6px;
+      }
+
+      .getCaptcha {
+        height: 40px;
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .regist-alert  {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.langSel {
+  margin-top: 0px;
+  line-height: 2rem;
+  cursor: pointer;        /*鼠标上移变成小手*/
+
+}
+
+.language {
+  /* padding-right: 0rem; */
+  margin-top: 22px;
+  margin-right: 15px;
+  color: #333333;
+  font-size: 0.85rem;
+  border: 0.1px solid #1890ff;
+  outline: none;
+  background-color:#FFFFFF;
+  float: right;
+}
+
+.ant-popover {
+  .success, .warning, .error {
+    transition: color .3s;
+  }
+
+  .success {
+    color: @success-color;
+  }
+
+  .warning {
+    color: @warning-color;
+  }
+
+  .error {
+    color: @error-color;
+  }
+}
+
+.progress-pass > .progress {
+  :global {
+    .ant-progress-bg {
+      background-color: @warning-color;
+    }
+  }
+}

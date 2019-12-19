@@ -1,0 +1,32 @@
+#root .ant-layout-sider .ant-menu{
+  .icon svg {
+    margin: 0 6px 0 -2px;
+  }
+
+  //菜单栏收缩样式
+  &-inline-collapsed {
+    width: 64px;
+
+    .ant-menu{
+      &-item, &-submenu-title {
+        padding: 0 20px !important;
+        text-overflow: clip;
+      }
+    }
+
+    .icon svg{
+      margin: 0px;
+      width: 24px;
+      height: 24px;
+    }
+
+    .min-hidden {
+      display: none;
+    }
+  }
+}
+
+//弹出二级菜单中隐藏图标
+.ant-menu-inline-collapsed-tooltip .ant-tooltip-inner svg{
+  display: none;
+}

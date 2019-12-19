@@ -1,0 +1,84 @@
+// @import "~antd/lib/style/color/colors.less";
+@import '~react-grid-layout/css/styles.css';
+
+@widgets-panel-height: calc(~"100vh - 100px");
+
+.no-widgets-tips {
+  height: @widgets-panel-height;
+  line-height: @widgets-panel-height;
+  text-align: center;
+  font-size: 24px;
+  color: #8c8c8c;
+}
+
+@hover-grid-border: #1890FF;
+@grid-placeholder-border: #262626;
+@grid-placeholder-bgcolor: rgba(120,120,120,0.4);
+
+.widgets-container:not(.static) {
+  div.react-grid-item {
+    overflow: hidden;
+    border: 1px solid transparent;
+
+    &:hover {
+      border: 1px solid @hover-grid-border;
+      box-shadow: 0 0 3px @hover-grid-border;
+      // border-radius: 5px;
+    }
+  }
+
+  div.react-grid-placeholder {
+    // border-radius: 5px;
+    // box-shadow: 0 0 3px @grid-placeholder-border;
+    border: 6px dashed @grid-placeholder-border;
+    background-color: @grid-placeholder-bgcolor;
+  }
+
+  .grid-close-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: rgba(38,38,38,0.3);
+    &:hover {
+      color: rgba(38,38,38,1);
+    }
+  }
+
+  // .ant-form {
+  //   width: 100%;
+  // }
+  // .ant-form-item {
+  //   margin-bottom: 0px;
+  // }
+}
+
+div.react-grid-item {
+  .ant-card {
+    height:100%;
+
+    .ant-card-head{
+      height: 40px;
+      min-height: 40px;
+    }
+
+    .ant-card-head-title{
+      line-height: 40px;
+      padding: 0px;
+    }
+
+    .ant-card-body {
+      height: calc(~"100% - 40px");
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.ant-modal {
+  .ant-form-item:last-child {
+    margin-bottom: 0px;
+  }
+}

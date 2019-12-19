@@ -1,0 +1,165 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=15768, tid=0x0000000000004180
+#
+# JRE version:  (8.0_202-b39) (build )
+# Java VM: OpenJDK 64-Bit Server VM (25.202-b39 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000002b12800):  JavaThread "Unknown thread" [_thread_in_vm, id=16768, stack(0x0000000002630000,0x0000000002730000)]
+
+Stack: [0x0000000002630000,0x0000000002730000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x0000000002b12800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=16768, stack(0x0000000002630000,0x0000000002730000)]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x0000000701800000, size: 3048 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x00000007c0000000
+
+Heap:
+ PSYoungGen      total 57344K, used 983K [0x0000000780800000, 0x0000000784800000, 0x00000007c0000000)
+  eden space 49152K, 2% used [0x0000000780800000,0x00000007808f5c38,0x0000000783800000)
+  from space 8192K, 0% used [0x0000000784000000,0x0000000784000000,0x0000000784800000)
+  to   space 8192K, 0% used [0x0000000783800000,0x0000000783800000,0x0000000784000000)
+ ParOldGen       total 131072K, used 0K [0x0000000701800000, 0x0000000709800000, 0x0000000780800000)
+  object space 131072K, 0% used [0x0000000701800000,0x0000000701800000,0x0000000709800000)
+ Metaspace       used 777K, capacity 4480K, committed 4480K, reserved 1056768K
+  class space    used 74K, capacity 384K, committed 384K, reserved 1048576K
+
+Card table byte_map: [0x00000000120a0000,0x00000000126a0000] byte_map_base: 0x000000000e894000
+
+Marking Bits: (ParMarkBitMap*) 0x000000006abb9f30
+ Begin Bits: [0x0000000012ea0000, 0x0000000015e40000)
+ End Bits:   [0x0000000015e40000, 0x0000000018de0000)
+
+Polling page: 0x0000000000940000
+
+CodeCache: size=245760Kb used=328Kb max_used=328Kb free=245431Kb
+ bounds [0x0000000002ce0000, 0x0000000002f50000, 0x0000000011ce0000]
+ total_blobs=57 nmethods=0 adapters=38
+ compilation: enabled
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.026 loading class java/lang/Short
+Event: 0.026 loading class java/lang/Short done
+Event: 0.026 loading class java/lang/Integer
+Event: 0.026 loading class java/lang/Integer done
+Event: 0.026 loading class java/lang/Long
+Event: 0.027 loading class java/lang/Long done
+Event: 0.027 loading class java/lang/NullPointerException
+Event: 0.027 loading class java/lang/NullPointerException done
+Event: 0.027 loading class java/lang/ArithmeticException
+Event: 0.027 loading class java/lang/ArithmeticException done
+
+
+Dynamic libraries:
+0x00007ff7e76e0000 - 0x00007ff7e7711000 	H:\Program Files\JetBrains\WebStorm 2019.1\jre64\bin\java.exe
+0x00007ffb5b5d0000 - 0x00007ffb5b7b1000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffb5b290000 - 0x00007ffb5b341000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffb57ed0000 - 0x00007ffb58143000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffb59bd0000 - 0x00007ffb59c71000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffb59460000 - 0x00007ffb594fe000 	C:\Windows\System32\msvcrt.dll
+0x00007ffb5b3b0000 - 0x00007ffb5b40b000 	C:\Windows\System32\sechost.dll
+0x00007ffb5b410000 - 0x00007ffb5b534000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffb58a70000 - 0x00007ffb58c00000 	C:\Windows\System32\USER32.dll
+0x00007ffb57eb0000 - 0x00007ffb57ed0000 	C:\Windows\System32\win32u.dll
+0x00007ffb59c90000 - 0x00007ffb59cb8000 	C:\Windows\System32\GDI32.dll
+0x00007ffb579a0000 - 0x00007ffb57b32000 	C:\Windows\System32\gdi32full.dll
+0x00007ffb58860000 - 0x00007ffb588ff000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffb57b40000 - 0x00007ffb57c38000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffb49510000 - 0x00007ffb49779000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17134.706_none_fb43a2cb30647007\COMCTL32.dll
+0x00007ffb59130000 - 0x00007ffb59452000 	C:\Windows\System32\combase.dll
+0x00007ffb57c40000 - 0x00007ffb57cba000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffb59db0000 - 0x00007ffb59ddd000 	C:\Windows\System32\IMM32.DLL
+0x000000006a310000 - 0x000000006a3e2000 	H:\Program Files\JetBrains\WebStorm 2019.1\jre64\bin\msvcr100.dll
+0x000000006a3f0000 - 0x000000006ac36000 	H:\Program Files\JetBrains\WebStorm 2019.1\jre64\bin\server\jvm.dll
+0x00007ffb59500000 - 0x00007ffb59508000 	C:\Windows\System32\PSAPI.DLL
+0x00007ffb41210000 - 0x00007ffb41219000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffb5b220000 - 0x00007ffb5b28c000 	C:\Windows\System32\WS2_32.dll
+0x00007ffb55550000 - 0x00007ffb55573000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffb551e0000 - 0x00007ffb5520a000 	C:\Windows\SYSTEM32\winmmbase.dll
+0x00007ffb589b0000 - 0x00007ffb589f9000 	C:\Windows\System32\cfgmgr32.dll
+0x00007ffb51f30000 - 0x00007ffb51f3a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffb2b4f0000 - 0x00007ffb2b4ff000 	H:\Program Files\JetBrains\WebStorm 2019.1\jre64\bin\verify.dll
+0x00007ffb28c70000 - 0x00007ffb28c99000 	H:\Program Files\JetBrains\WebStorm 2019.1\jre64\bin\java.dll
+0x00007ffb28f20000 - 0x00007ffb28f36000 	H:\Program Files\JetBrains\WebStorm 2019.1\jre64\bin\zip.dll
+
+VM Arguments:
+java_command: org.jetbrains.git4idea.nativessh.GitNativeSshAskPassApp wenshan@xnlab's password: 
+java_class_path (initial): H:/Program Files/JetBrains/WebStorm 2019.1/plugins/git4idea/lib/git4idea-rt.jar;H:/Program Files/JetBrains/WebStorm 2019.1/lib/xmlrpc-2.0.1.jar;H:/Program Files/JetBrains/WebStorm 2019.1/lib/commons-codec-1.10.jar;H:/Program Files/JetBrains/WebStorm 2019.1/lib/util.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=H:\Program Files\Java\jdk1.8.0_201
+PATH=H:\Program Files\Git\mingw64\libexec\git-core;H:\Program Files\Git\mingw64\bin;H:\Program Files\Git\usr\bin;C:\Users\Hardware_lab\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;H:\Program Files\Java\jdk1.8.0_201\bin;H:\Program Files\Java\jdk1.8.0_201\jre\bin;H:\Program Files\Git\usr\bin;H:\Program Files\nodejs;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit;C:\Program Files\Microsoft SQL Server\110\Tools\Binn;H:\NCSLab\html5_video\plan_A\ffmpeg;C:\Users\Hardware_lab\AppData\Roaming\npm;H:\MATLAB\R2016a\runtime\win64;H:\MATLAB\R2016a\bin;H:\MATLAB\R2016a\polyspace\bin;C:\Users\Hardware_lab\AppData\Local\Microsoft\WindowsApps;H:\texlive\2018\bin\win32;C:\Users\Hardware_lab\AppData\Local\atom\bin
+USERNAME=Hardware_lab
+DISPLAY=:0.0
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 60 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 17134 (10.0.17134.706)
+
+CPU:total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 6 model 60 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, tsc, tscinvbit, bmi1, bmi2
+
+Memory: 4k page, physical 12476776k(3453096k free), swap 25584228k(4612k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.202-b39) for windows-amd64 JRE (1.8.0_202-release-1483-b39), built on Mar  7 2019 22:58:46 by "builduser" with MS VC++ 10.0 (VS2010)
+
+time: Thu May 09 22:00:10 2019
+timezone: 中国标准时间
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

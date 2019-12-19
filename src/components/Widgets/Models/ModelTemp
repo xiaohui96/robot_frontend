@@ -1,0 +1,44 @@
+import React from 'react';
+import Reflux from 'reflux';
+
+import Model from './Model';
+
+class L1IP extends Reflux.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    paraNames=[
+        'Angle',
+        'Position'
+    ];
+
+    loadModel = (scene)=>{
+        //this.loadBase(scene);
+    }
+
+    updateValues=(data)=>{
+
+    }
+
+    render(){
+        const {plantInfo,signalParaList,dataPool,keyValue,params,monitor}=this.props;
+        //console.log(params);
+        return (
+            <Model
+                params={params}
+                monitor={monitor}
+                plantInfo={plantInfo}
+                signalParaList={signalParaList}
+                dataPool={dataPool}
+                keyValue={keyValue}
+                onParamsConfig={this.props.onParamsConfig}
+                paraNames={this.paraNames}
+                loadModel={this.loadModel}
+                updateValues={this.updateValues}
+            />
+        );
+    }
+}
+
+export default L1IP;

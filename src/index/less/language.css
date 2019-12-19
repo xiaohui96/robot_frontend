@@ -1,0 +1,18 @@
+.langSel {
+  margin-top: 0px;
+  line-height: 2rem;
+  cursor: pointer;        /*鼠标上移变成小手*/
+
+}
+
+.language {
+ /* padding-right: 0rem; */
+  margin-top: 22px;
+  margin-right: 15px;
+  color: #333333;
+  font-size: 0.85rem;
+  border: 0.1px solid #1890ff;
+  outline: none;
+  background-color:#FFFFFF;
+  float: right;
+}

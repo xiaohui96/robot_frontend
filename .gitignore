@@ -1,0 +1,5 @@
+/node_modules
+/dist
+/.idea/
+/src/backend/laravel/vendor
+/npm-debug.log
