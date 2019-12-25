@@ -1,58 +1,81 @@
 import { Tree } from 'antd';
 import React from 'react';
+import appStore from "stores/appStore";
+import robotStore from "stores/RobotStore";
+import AppActions from "actions/AppActions";
+import Reflux from "reflux";
 const { TreeNode } = Tree;
 const treeData = [
     {
-        title: '0-0',
-        key: '0-0',
+        title: '变电站',
+        key: '0',
         children: [
-            {
-                title: '0-0-0',
-                key: '0-0-0',
-                children: [
-                    { title: '0-0-0-0', key: '0-0-0-0' },
-                    { title: '0-0-0-1', key: '0-0-0-1' },
-                    { title: '0-0-0-2', key: '0-0-0-2' },
-                ],
-            },
-            {
-                title: '0-0-1',
-                key: '0-0-1',
-                children: [
-                    { title: '0-0-1-0', key: '0-0-1-0' },
-                    { title: '0-0-1-1', key: '0-0-1-1' },
-                    { title: '0-0-1-2', key: '0-0-1-2' },
-                ],
-            },
-            {
-                title: '0-0-2',
-                key: '0-0-2',
-            },
-        ],
-    },
-    {
-        title: '0-1',
-        key: '0-1',
-        children: [
-            { title: '0-1-0-0', key: '0-1-0-0' },
-            { title: '0-1-0-1', key: '0-1-0-1' },
-            { title: '0-1-0-2', key: '0-1-0-2' },
-        ],
-    },
-    {
-        title: '0-2',
-        key: '0-2',
-    },
+        {
+            title: '500KV设备区',
+            key: '0-0',
+            children: [
+                {
+                    title: '西二设备',
+                    key: '0-0-0',
+                    children: [
+                        {title: '第一排西二SF6压力表', key: '0-0-0-0'},
+                        {title: '第一排西二SF6避雷器', key: '0-0-0-1'},
+                        {title: '第一排西二SF6压力表', key: '0-0-0-2'},
+                    ],
+                },
+                {
+                    title: '西三设备',
+                    key: '0-0-1',
+                    children: [
+                        {title: '第二排西三SF6压力表', key: '0-0-1-0'},
+                        {title: '第三排西三SF6避雷器', key: '0-0-1-1'},
+                        {title: '第一排西三SF6压力表', key: '0-0-1-2'},
+                    ],
+                },
+                {
+                    title: '东一设备',
+                    key: '0-0-2',
+                },
+            ],
+        },
+        {
+            title: '200KV设备区',
+            key: '0-1',
+            children: [
+                {title: '西三设备', key: '0-1-0'},
+                {title: '西二设备', key: '0-1-1'},
+                {title: '东三设备', key: '0-1-2'},
+            ],
+        },
+        {
+            title: '100KV设备区',
+            key: '0-2',
+        },
+            ]
+    }
 ];
 
 class MapSetting extends React.Component {
-    state = {
-        expandedKeys: ['0-0-0', '0-0-1'],
-        autoExpandParent: true,
-        checkedKeys: ['0-0-0'],
-        selectedKeys: [],
-    };
+    constructor(props) {
+        super(props);
+        this.stores = [
+            appStore,
+            robotStore
+        ];
+        this.storeKeys = ['mapList'];
+        this.state = {
+            expandedKeys: ['0-0-0', '0-0-1'],
+            autoExpandParent: true,
+            checkedKeys: ['0-0-0'],
+            selectedKeys: [],
+            mapList: [],
+        };
+    }
+    componentDidMount() {
+        AppActions.Robot.retrieve(()=>{
+        });
 
+    }
     onExpand = expandedKeys => {
         console.log('onExpand', expandedKeys);
         // if not set autoExpandParent to false, if children expanded, parent can not collapse.
@@ -86,6 +109,8 @@ class MapSetting extends React.Component {
         });
 
     render() {
+        const {mapList} = this.state;
+
         return (
             <Tree
                 checkable
@@ -96,8 +121,10 @@ class MapSetting extends React.Component {
                 checkedKeys={this.state.checkedKeys}
                 onSelect={this.onSelect}
                 selectedKeys={this.state.selectedKeys}
+                componentDidMount={this.componentDidMount()}
             >
-                {this.renderTreeNodes(treeData)}
+                {this.renderTreeNodes(treeData)
+                }
             </Tree>
         );
     }
