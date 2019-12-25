@@ -1,4 +1,4 @@
-# NCSLab
+# Robot
 
 ## Installation
 ```
@@ -19,11 +19,9 @@ npm run build       //生产模式
 
 ## Q&A
 
-- 如何修改本地git仓库所跟踪的远程仓库地址？（主要用于当远程仓库地址发生改变的时候）
-`git remote set-url origin git@192.168.46.114:~/repositories/ncslab_frontend.git`
-
-- 如何下载新的git项目？
-`git clone git@192.168.46.114:~/repositories/ncslab_frontend.git`
+- 仓库前后端地址：
+https://github.com/xiaohui96/robot_frontend.git
+https://github.com/xiaohui96/robot_backend.git
 
 关于权限：
 
@@ -32,5 +30,3 @@ npm run build       //生产模式
 
 关于设备类型：
 
-1. 虚拟设备（副本）
-2. 虚拟设备（单一）
