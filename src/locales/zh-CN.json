@@ -145,8 +145,14 @@
   "station id":"变电站序号",
   "task name":"任务名称",
 
-
-
+  "//":"PatrolResult.jsx",
+  "patrol result":"巡检结果",
+  "recognition type":"识别类型",
+  "location":"点位名称",
+  "recognition Value":"识别结果",
+  "recognition Time":"识别时间",
+  "collect Information":"采集信息",
+  "alarm Type":"告警等级",
 
   "//":"UserDetail.jsx",
   "email":"邮箱",

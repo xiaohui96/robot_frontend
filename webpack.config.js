@@ -27,11 +27,6 @@ const baseHtmlTemplate = {
   appMountId: 'root',
   scripts: [
     '//at.alicdn.com/t/font_1558309_r9iu813d1ug.js',//更新后可能需要重启npm
-    '/three/build/three.js',
-    '/three/examples/js/cnzz.js',
-    '/three/examples/js/loaders/MTLLoader.js',
-    '/three/examples/js/loaders/OBJLoader.js',
-    '/three/examples/js/controls/OrbitControls.js',
   ],
   favicon: "src/images/logo.png",
   minify: {
@@ -96,9 +91,9 @@ const webpackConfig = {
     symlinks: false,
     cacheWithContext: false
   },
-  externals:{
-    three: 'THREE'
-  },
+    externals:{
+        three: 'THREE'
+    },
   module: {
     rules: [
       {
@@ -200,7 +195,7 @@ module.exports = ( {analyze, env = 'prod'} = {env: 'prod'} ) => {
           ]
         },
         proxy: [{
-          context: ["/three", "/api"],
+          context: ["/three","/api"],
           target: "http://localhost:8000",
         }]
       }

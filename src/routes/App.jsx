@@ -14,12 +14,6 @@ import appStore from 'stores/appStore';
 
 //路由页面
 import SystemConfig from 'routes/admin/SystemConfig';
-import LabsConfig from 'routes/admin/LabsConfig';
-import CamerasConfig from 'routes/admin/CamerasConfig';
-import ServersConfig from 'routes/admin/ServersConfig';
-import UsersConfig from 'routes/admin/UsersConfig';
-import TeachersConfig from 'routes/admin/TeachersConfig';
-import StudentsResult from 'routes/admin/StudentsResult';
 
 import RobotPatrol from 'routes/lab/RobotPatrol';
 import OverallPatrol from 'routes/lab/OverallPatrol';
@@ -28,6 +22,8 @@ import SpecialPatrol from 'routes/lab/SpecialPatrol';
 import CustomTask from 'routes/lab/CustomTask';
 import TaskDisplay from 'routes/lab/TaskDisplay';
 import MapSetting from 'routes/lab/MapSetting';
+import PatrolResult from 'routes/lab/PatrolResult';
+
 
 //菜单项
 import adminMenu from 'routes/admin/menu';
@@ -39,8 +35,6 @@ import Breadcrumb from 'components/Breadcrumb';
 import ErrorBoundary from 'components/ErrorBoundary';
 
 import UserDetail from 'routes/userinfo/UserDetail';
-import Report from 'routes/userinfo/Report';
-import Picture from 'routes/userinfo/Picture';
 import userinfoMenu from 'routes/userinfo/menu';
 
 //工具类
@@ -350,17 +344,11 @@ class App extends Reflux.Component {
                                 <Route path="/lab/customTask" component={CustomTask}/>
                                 <Route path="/lab/taskDisplay" component={TaskDisplay}/>
                                 <Route path="/lab/mapSetting" component={MapSetting}/>
+                                <Route path="/lab/patrolResult" component={PatrolResult}/>
+
                                 {/*系统管理员的界面*/}
                                 <Route path="/admin/systemConfig" component={SystemConfig}/>
-                                <Route path="/admin/labsConfig" component={LabsConfig}/>
-                                <Route path="/admin/camerasConfig" component={CamerasConfig}/>
-                                <Route path="/admin/serversConfig" component={ServersConfig}/>
-                                <Route path="/admin/usersConfig" component={UsersConfig}/>
-                                <Route path="/admin/teachersConfig" component={TeachersConfig}/>
-                                <Route path="/admin/studentsResult" component={StudentsResult}/>
                                 <Route path="/userinfo/userDetail" component={UserDetail}/>
-                                <Route path="/userinfo/report" component={Report}/>
-                                <Route path="/userinfo/picture" component={Picture}/>
                             </Switch>
                         </ErrorBoundary>
                     </Content>

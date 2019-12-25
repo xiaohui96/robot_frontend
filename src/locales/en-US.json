@@ -147,6 +147,15 @@
   "station id":"Station Id",
   "task name":"Task Name",
 
+  "//":"PatrolResult.jsx",
+  "patrol result":"Patrol result",
+  "recognition type":"Recognition Type",
+  "location":"location",
+  "recognitionValue":"Recognition Value",
+  "recognitionTime":"Recognition Time",
+  "collectInformation":"Collect Information",
+  "alarm Type":"Alarm Type",
+
   "//":"UserDetail.jsx",
   "email":"Email",
   "last login":"Last Login",

@@ -214,15 +214,6 @@ class FilterForm extends React.Component {
                             )}
                         </FormItem>
                     </Col>
-                    /*{ formSimple ? null :
-                        <Col lg={8} md={12} sm={24}>
-                            <FormItem label="属性">
-                                {getFieldDecorator('property')(
-                                    <Input placeholder="请输入要查询的属性" />
-                                )}
-                            </FormItem>
-                        </Col>
-                    }*/
                     { !formSimple ? null :
                         <Col lg={8} md={12} sm={24} >
                             <div className="reset-filter-para form-simple">

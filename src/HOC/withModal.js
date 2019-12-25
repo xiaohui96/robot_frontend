@@ -82,27 +82,24 @@ export default function withModal(FluxAction, ModalForm) {
           modalVisible: false
         })
       }
-
-      render() {
-        const {modalVisible, modalFormData} = this.state;
-        return (
-          <>
-            <WrappedComponent
-              onAdd={this.onAdd}
-              onEdit={this.onEdit}
-              onDel={this.onDel}
-              onDelWithPara={this.onDelWithPara}
-              onAllDel={this.onAllDel}
-              onDelTask={this.onDelTask}
-
-              {...this.props}
+        render() {
+            const {modalVisible, modalFormData} = this.state;
+            return (
+                <>
+                <WrappedComponent
+                    onAdd={this.onAdd}
+                    onEdit={this.onEdit}
+                    onDel={this.onDel}
+                    onDelWithPara={this.onDelWithPara}
+                    onAllDel={this.onAllDel}
+                    onDelTask={this.onDelTask}
+            {...this.props}
             />
             <ModalForm visible={modalVisible} hideModal={this.hideModal} modalFormData={modalFormData} {...this.props}/>
-          </>
+            </>
         )
-      }
+        }
     }
-
     //这里是为了在 React Developer Tools 中更清楚的展示高阶组件的名称
     //https://reactjs.org/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging
     function getDisplayName(WrappedComponent) {
