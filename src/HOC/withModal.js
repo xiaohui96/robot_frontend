@@ -18,6 +18,13 @@ export default function withModal(FluxAction, ModalForm) {
           modalFormData: null
         })
       }
+        onAddMap = (record) => {
+            this.setState({
+                modalVisible: true,
+                modalFormData: record,
+            }
+        )
+        }
 
       onEdit = (record) => {
         this.setState({
@@ -88,6 +95,7 @@ export default function withModal(FluxAction, ModalForm) {
                 <>
                 <WrappedComponent
                     onAdd={this.onAdd}
+                    onAddMap={this.onAddMap}
                     onEdit={this.onEdit}
                     onDel={this.onDel}
                     onDelWithPara={this.onDelWithPara}

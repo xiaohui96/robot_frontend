@@ -4,26 +4,34 @@ import history from 'utils/history';
 import { message } from 'antd';
 
 //Actions
-import AppActions from 'actions/AppActions';
+import AdminActions from 'actions/AdminActions';
 
 class RobotStore extends Reflux.Store {
     constructor() {
         super();
-        this.listenables = AppActions;
-        this.state = {
-            robotList: [],
-        }
+        this.listenables = AdminActions;
     }
 
-    onRobotRetrieve(callback){
-        axios.get("/getMapInformation")
+    onRobotRetrieve(formData){
+        axios.get("/robotConfig/robot", formData)
             .then( (response) => {
-                console.log(response.data);
-                this.setState({ robotList: response.data });
+                this.setState({
+                    robotParams: response.data
+                })
+            })
+    }
+    onRobotUpdate(formData){
+        const hideLoading = message.loading("配置更新中......",0)
+
+        axios.put("/robotConfig/robot", {params: formData})
+            .then( (response) => {
+                hideLoading();
+                message.success("更新成功！",1)
             })
             .catch( ()=>{
-                message.error("地图信息列表获取失败！", 3);
-            });
+                hideLoading();
+                message.error("更新失败！",1)
+            })
     }
 }
 

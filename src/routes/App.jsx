@@ -13,7 +13,7 @@ import AppActions from 'actions/AppActions';
 import appStore from 'stores/appStore';
 
 //路由页面
-import SystemConfig from 'routes/admin/SystemConfig';
+import UsersConfig from 'routes/admin/UsersConfig';
 
 import RobotPatrol from 'routes/lab/RobotPatrol';
 import OverallPatrol from 'routes/lab/OverallPatrol';
@@ -23,6 +23,7 @@ import CustomTask from 'routes/lab/CustomTask';
 import TaskDisplay from 'routes/lab/TaskDisplay';
 import MapSetting from 'routes/lab/MapSetting';
 import PatrolResult from 'routes/lab/PatrolResult';
+import RobotSetting from 'routes/lab/RobotSetting';
 
 
 //菜单项
@@ -49,20 +50,16 @@ import './App.less';
 import intl from 'react-intl-universal';
 import http from "axios";
 import _ from "lodash";
-//import "../index/less/applang.css"
 import qs from 'qs';
 import LangConsistent from 'routes/LangConsistent';
-import LangSetting from "routes/LangSetting";
 
 
 const {SubMenu} = Menu;
 const {Header, Content, Sider, Footer} = Layout;
 
 const languageType = qs.parse(window.location.search.slice(1)).lang;
-//console.log("languageType ="+languageType);
 const language = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage);
-//console.log("language =" + language);
-// var langValue = false;
+
 
 const SUPPOER_LOCALES = [
     {
@@ -97,9 +94,6 @@ class App extends Reflux.Component {
 
     }
 
-    // componentWillUnmount() {
-    //     // LangConsistent();
-    // }
 
     loadLocales() {
         let currentLocale = intl.determineLocale({
@@ -306,7 +300,7 @@ class App extends Reflux.Component {
                                                     case 1:
                                                         return (<span>{intl.get('admin')}</span>);
                                                     case 2:
-                                                        return (<span>{intl.get('student')}</span>);
+                                                        return (<span>{intl.get('non_administrator')}</span>);
                                                 }
 
                                             })()
@@ -345,9 +339,10 @@ class App extends Reflux.Component {
                                 <Route path="/lab/taskDisplay" component={TaskDisplay}/>
                                 <Route path="/lab/mapSetting" component={MapSetting}/>
                                 <Route path="/lab/patrolResult" component={PatrolResult}/>
+                                <Route path="/lab/robotSetting" component={RobotSetting}/>
 
                                 {/*系统管理员的界面*/}
-                                <Route path="/admin/systemConfig" component={SystemConfig}/>
+                                <Route path="/admin/usersConfig" component={UsersConfig}/>
                                 <Route path="/userinfo/userDetail" component={UserDetail}/>
                             </Switch>
                         </ErrorBoundary>

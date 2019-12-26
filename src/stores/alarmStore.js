@@ -16,7 +16,7 @@ class AlarmStore extends Reflux.Store {
     }
 
     onAlarmCreate(name,callback){
-        axios.Store(`/alarmInformation`)
+        axios.post(`/alarmInformation`)
             .then( (response) => {
                 message.success("删除成功!",1);
                 this.onAlarmRetrieve();

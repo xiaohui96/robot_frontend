@@ -156,6 +156,10 @@
   "collectInformation":"Collect Information",
   "alarm Type":"Alarm Type",
 
+  "//":"MapSetting.jsx",
+  "title":"Title",
+  "parentId":"ParentId",
+
   "//":"UserDetail.jsx",
   "email":"Email",
   "last login":"Last Login",

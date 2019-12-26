@@ -4,7 +4,7 @@
   "student":"学生",
   "management center":"管理中心",
   "user information":"个人信息",
-
+  "non_administrator":"普通用户",
 
   "//":"nav.jsx",
   "home":"首页",
@@ -154,6 +154,11 @@
   "collect Information":"采集信息",
   "alarm Type":"告警等级",
 
+  "//":"MapSetting.jsx",
+  "title":"名称",
+  "parentId":"层级",
+
+
   "//":"UserDetail.jsx",
   "email":"邮箱",
   "last login":"上次登录",
@@ -166,8 +171,7 @@
   "phone number":"联系电话",
   "submit":"提交",
 
-  "//":"FullControlTag.jsx",
-  "apply for control":"申请控制权",
+  "//":"FullControlTag.jsx",  "apply for control":"申请控制权",
   "give up control":"放弃控制权",
   "test rig status":"当前设备空闲",
   "copy num":"当前有{plantNum, number}个副本，",

@@ -3,7 +3,7 @@ import React from 'react';
 import Reflux from 'reflux';
 import { Route } from 'react-router-dom';
 import { Row, Col, Table, Card, Modal, Form, Icon, Select, Input, InputNumber, Button, Badge, Tooltip, DatePicker } from 'antd';
-
+import ExportJsonExcel from 'js-export-excel';
 //数据流
 import AppActions from 'actions/AppActions';
 import alarmStore from 'stores/patrolStore';
@@ -58,19 +58,42 @@ class PatrolResult extends Reflux.Component {
         });
     }
 
-    bulkDeletion = () => {
-        const {selectedRows} = this.state;
-        Modal.confirm({
-            title: `确定批量删除 ${this.state.selectedRows.length} 个巡检结果吗?`,
-            okText: "确定",
-            cancelText: "取消",
-            onOk() {
-                return new Promise((resolve,reject)=>{
-                    AppActions.Patrol.retrieve(selectedRows, () => resolve());
-                })
+    downloadExcel = () => {
+        const data = this.state.patrolList ? this.state.patrolList : '';//表格数据
+        var option={};
+        let dataTable = [];
+        if (data) {
+            for (let i in data) {
+                if(data){
+                    let obj = {
+                        '序号': data[i].id,
+                        '识别类型': data[i].recognitionType,
+                        '点位名称': data[i].location,
+                        '识别结果': data[i].recognitionValue,
+                        '告警等级': data[i].alarmType,
+                        '识别时间': data[i].recognitionTime,
+                        '采集信息': data[i].collectInformation,
+
+
+                    }
+                    dataTable.push(obj);
+                }
             }
-        });
+        }
+        option.fileName = '巡检结果报告'
+        option.datas=[
+            {
+                sheetData:dataTable,
+                sheetName:'sheet',
+                sheetFilter:['序号','识别类型','点位名称', '识别结果', '告警等级', '识别时间', '采集信息'],
+                sheetHeader:['序号','识别类型','点位名称', '识别结果', '告警等级', '识别时间', '采集信息'],
+            }
+        ];
+
+        var toExcel = new ExportJsonExcel(option);
+        toExcel.saveExcel();
     }
+
 
     render() {
         const {patrolList,  filteredInfo, selectedRows} = this.state;
@@ -80,7 +103,7 @@ class PatrolResult extends Reflux.Component {
                 {
                     selectedRows.length > 0 && (
                         <span className="tableListOperator">
-              <Button onClick={this.bulkDeletion}>生成巡检结果报告</Button>
+              <Button onClick={this.downloadExcel}>生成巡检结果报告</Button>
             </span>
                     )
                 }
@@ -137,8 +160,7 @@ class PatrolResult extends Reflux.Component {
                     />
                     <Column  title={intl.get('recognition Time')}
                              dataIndex="recognitionTime"
-                        //搜索
-                             filteredValue= {filteredInfo.recognitionTime ? [filteredInfo.recognitionTime] : null}
+                        //搜索                             filteredValue= {filteredInfo.recognitionTime ? [filteredInfo.recognitionTime] : null}
                              onFilter= {(value, record) => record.recognitionTime.includes(value)}
                     />
                     <Column  title={intl.get('collect Information')}

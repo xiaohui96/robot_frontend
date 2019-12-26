@@ -46,8 +46,8 @@ const AppActions = Reflux.createActions([
       },
    },
     {
-        Robot:{
-            children:["retrieve","query","update","delete"]
+        Map:{
+            children:["retrieve","query","update","delete","create"]
         },
     },
     {

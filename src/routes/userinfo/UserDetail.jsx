@@ -7,7 +7,7 @@ import { Menu, Card, Form, Modal,Select, Input, InputNumber, Switch as Toggle, R
 import InfoActions from 'actions/InfoActions';
 import InfoStore from 'stores/InfoStore';
 
-import 'routes/admin/SystemConfig.less';
+import 'routes/userinfo/UserDetail.less';
 import intl from 'react-intl-universal';
 
 const FormItem = Form.Item;
@@ -37,20 +37,8 @@ const submitFormLayout = {
     },
 };
 
-// const roleList = (
-//     <Select>
-//         <Option value={0}>访客</Option>
-//         <Option value={1}>临时用户</Option>
-//         <Option value={2}>初级用户</Option>
-//         <Option value={3}>普通用户</Option>
-//         <Option value={4}>高级用户</Option>
-//         <Option value={5}>设备管理员</Option>
-//         <Option value={6}>系统管理员</Option>
-//     </Select>
-// );
 
 const roleList= new Array('访客','临时用户','初级用户','普通用户','高级用户','设备管理员','系统管理员');
-const statusList= new Array('锁定中','已激活');
 
 function timestampToTime(timestamp) {
     var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
@@ -111,8 +99,6 @@ class UserDetail extends Reflux.Component {
         {getFieldDecorator('lastLand',{initialValue: userFormData.last_land_time,})}
         {getFieldDecorator('regDate',{initialValue: userFormData.created_at,})}
         {getFieldDecorator('role',{initialValue: userFormData.role,})}
-        {getFieldDecorator('restTime',{initialValue: userFormData.rest_time,})}
-        {getFieldDecorator('statusCode',{initialValue: userFormData.status_code,})}
         {getFieldDecorator('id',{initialValue: userFormData.id,})}
 
         return (
@@ -152,26 +138,9 @@ class UserDetail extends Reflux.Component {
                             <span className="ant-form-text">{roleList[userFormData.role]}</span>
                         </FormItem>
 
-                        <FormItem label={intl.get('experiment time left')} {...formItemLayout}>
-                            <span className="ant-form-text">{userFormData.rest_time}</span>
-                        </FormItem>
-
-                        <FormItem label={intl.get('account status')} {...formItemLayout}>
-                            <span className="ant-form-text">{statusList[userFormData.status_code]}</span>
-                        </FormItem>
-
-
                         <FormItem  label={intl.get('institution')} {...formItemLayout}>
                             {getFieldDecorator('institution', {
                                 initialValue: userFormData.institution,
-                            })(
-                                <Input />
-                            )}
-                        </FormItem>
-
-                        <FormItem label={intl.get('address')} {...formItemLayout}>
-                            {getFieldDecorator('address', {
-                                initialValue: userFormData.address,
                             })(
                                 <Input />
                             )}
