@@ -1,134 +1,200 @@
-import { Tree } from 'antd';
+//依赖类
 import React from 'react';
-import appStore from "stores/appStore";
-import robotStore from "stores/RobotStore";
-import AppActions from "actions/AppActions";
-import Reflux from "reflux";
-const { TreeNode } = Tree;
-const treeData = [
-    {
-        title: '变电站',
-        key: '0',
-        children: [
-        {
-            title: '500KV设备区',
-            key: '0-0',
-            children: [
-                {
-                    title: '西二设备',
-                    key: '0-0-0',
-                    children: [
-                        {title: '第一排西二SF6压力表', key: '0-0-0-0'},
-                        {title: '第一排西二SF6避雷器', key: '0-0-0-1'},
-                        {title: '第一排西二SF6压力表', key: '0-0-0-2'},
-                    ],
-                },
-                {
-                    title: '西三设备',
-                    key: '0-0-1',
-                    children: [
-                        {title: '第二排西三SF6压力表', key: '0-0-1-0'},
-                        {title: '第三排西三SF6避雷器', key: '0-0-1-1'},
-                        {title: '第一排西三SF6压力表', key: '0-0-1-2'},
-                    ],
-                },
-                {
-                    title: '东一设备',
-                    key: '0-0-2',
-                },
-            ],
-        },
-        {
-            title: '200KV设备区',
-            key: '0-1',
-            children: [
-                {title: '西三设备', key: '0-1-0'},
-                {title: '西二设备', key: '0-1-1'},
-                {title: '东三设备', key: '0-1-2'},
-            ],
-        },
-        {
-            title: '100KV设备区',
-            key: '0-2',
-        },
-            ]
-    }
-];
+import Reflux from 'reflux';
+import { Table, Card, Modal, Form, Select, Switch, Input, InputNumber,Radio, Button,Progress, Badge, Tooltip, Upload,message, Icon as OldIcon} from 'antd';
+import './RobotPatrol.less';
 
-class MapSetting extends React.Component {
+//数据流
+import AppActions from 'actions/AppActions';
+import mapStore from 'stores/mapStore';
+
+
+//组件类
+import _Icon from 'components/Icon';
+import {formItemLayoutInModal} from 'components/layout';
+import withModal from "HOC/withModal";
+
+//语言
+import intl from 'react-intl-universal';
+
+const FormItem = Form.Item;
+const Option = Select.Option;
+const Column = Table.Column;
+const confirm = Modal.confirm;
+class MapSetting extends Reflux.Component {
     constructor(props) {
         super(props);
-        this.stores = [
-            appStore,
-            robotStore
+        this.stores =[
+            mapStore
         ];
         this.storeKeys = ['mapList'];
         this.state = {
-            expandedKeys: ['0-0-0', '0-0-1'],
-            autoExpandParent: true,
-            checkedKeys: ['0-0-0'],
-            selectedKeys: [],
             mapList: [],
-        };
+        }
     }
     componentDidMount() {
-        AppActions.Robot.retrieve(()=>{
+        AppActions.Map.retrieve(()=>{
         });
 
     }
-    onExpand = expandedKeys => {
-        console.log('onExpand', expandedKeys);
-        // if not set autoExpandParent to false, if children expanded, parent can not collapse.
-        // or, you can remove all expanded children keys.
+
+    hideModal = () => {
         this.setState({
-            expandedKeys,
-            autoExpandParent: false,
-        });
-    };
+            ModalVisible: false
+        })
+    }
 
-    onCheck = checkedKeys => {
-        console.log('onCheck', checkedKeys);
-        this.setState({ checkedKeys });
-    };
-
-    onSelect = (selectedKeys, info) => {
-        console.log('onSelect', info);
-        this.setState({ selectedKeys });
-    };
-
-    renderTreeNodes = data =>
-        data.map(item => {
-            if (item.children) {
-                return (
-                    <TreeNode title={item.title} key={item.key} dataRef={item}>
-                        {this.renderTreeNodes(item.children)}
-                    </TreeNode>
-                );
-            }
-            return <TreeNode key={item.key} {...item} />;
-        });
 
     render() {
         const {mapList} = this.state;
+        //可以生成多级嵌套的树
+        //let mapTree = [];
+        let list = mapList.reduce(function(prev, item){
+            prev[item.parentId]?prev[item.parentId].push(item):prev[item.parentId] = [item];
+            return prev
+        },{});
 
+
+        for (let key in list) {
+            list[key].forEach(function (item) {
+                item.children = list[item.id] ? list[item.id] : [];
+            });
+        }
+        const mapTree = list[0];
+        //console.log(mapTree);
         return (
-            <Tree
-                checkable
-                onExpand={this.onExpand}
-                expandedKeys={this.state.expandedKeys}
-                autoExpandParent={this.state.autoExpandParent}
-                onCheck={this.onCheck}
-                checkedKeys={this.state.checkedKeys}
-                onSelect={this.onSelect}
-                selectedKeys={this.state.selectedKeys}
-                componentDidMount={this.componentDidMount()}
-            >
-                {this.renderTreeNodes(treeData)
-                }
-            </Tree>
-        );
+            <div>
+                <Button type="primary" className="add-new" onClick={this.props.onAddMap}>新建地图点</Button>
+                <Card >
+                    <Table
+                        showHeader={true}
+                        dataSource={mapTree}
+                        onRow={(record) => {
+                            return {
+                                //onDoubleClick: () => this.props.onEdit(record),
+                            };
+                        }}
+                        rowKey="id"
+                    >
+                        <Column title={intl.get('title')} dataIndex="title"/>
+                        <Column title={intl.get('id')} dataIndex="id"/>
+                        <Column title={intl.get('parentId')} dataIndex="parentId"/>
+                        <Column
+                            title="操作"
+                            width={300}
+                            fixed='right'
+                            key="operation"
+                            render={(record) => (
+                                <div className="table-operate">
+                                    <Tooltip title="编辑">
+                                        <a onClick={()=> this.props.onEdit(record)}>
+                                            <_Icon iconid="edit"></_Icon>
+                                        </a>
+                                    </Tooltip>
+                                    <Tooltip title="删除">
+                                        <a onClick={()=> this.props.onDelWithPara(record.title, record.id)}>
+                                            <_Icon iconid="delete"></_Icon> </a>
+                                    </Tooltip>
+                                </div>
+                            )}
+                        />
+                    </Table>
+                </Card>
+
+            </div>
+        )
     }
 }
+@Form.create()
+class MapModal extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            confirmLoading: false
+        }
+    }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
 
-export default MapSetting;
+        this.props.form.validateFields((err, formData) => {
+            if (!err) {
+                const { modalFormData } = this.props;
+                this.setState({
+                    confirmLoading: true
+                })
+
+                //数据交互完成后回调函数关闭Modal
+                const callback = ()=> {
+                    this.setState({
+                        confirmLoading: false
+                    });
+                    this.props.hideModal();
+                };
+
+                if ( modalFormData.id ) {
+                    AppActions.Map.update(formData, callback);
+                } else {
+                    AppActions.Map.create(formData, callback)
+                }
+            }
+        });
+    }
+
+    render() {
+        const { getFieldDecorator } = this.props.form;
+        const { visible, modalFormData } = this.props;
+        const { confirmLoading } = this.state;
+
+        return (
+            <Modal
+                visible={visible}
+                title={modalFormData ?.id? "配置地图点" : "新建地图点"}
+                maskClosable={true}
+                confirmLoading={confirmLoading}
+                onOk={this.handleSubmit}
+                onCancel={this.props.hideModal}
+                afterClose={this.props.form.resetFields}
+                okText={"修改"}
+                cancelText="取消"
+            >
+                <Form layout="horizontal" hideRequiredMark>
+                    {
+                        modalFormData && (
+                            <>
+                                <FormItem  label="ID"  {...formItemLayoutInModal} >
+                                    {/*<span className="ant-form-text">{modalFormData.id}</span>    */}
+                                    {getFieldDecorator('id', {
+                                        initialValue: modalFormData.id,
+                                    })(
+                                        <Input />
+                                    )}
+
+                                </FormItem>
+
+                                <FormItem    label="名称"  {...formItemLayoutInModal}>
+                                    {/*<span className="ant-form-text">{modalFormData.account}</span>*/}
+                                    {getFieldDecorator('title', {
+                                        initialValue: modalFormData.title,
+                                    })(
+                                        <Input />
+                                    )}
+                                </FormItem>
+
+                                <FormItem    label="层级"  {...formItemLayoutInModal}>
+                                    {/*<span className="ant-form-text">{modalFormData.account}</span>*/}
+                                    {getFieldDecorator('parentId', {
+                                        initialValue: modalFormData.parentId,
+                                    })(
+                                        <Input />
+                                    )}
+                                </FormItem>
+                            </>
+                        )
+                    }
+                </Form>
+            </Modal>
+        )
+    }
+}
+export default withModal(AppActions.Map, MapModal)(MapSetting);
