@@ -158,6 +158,8 @@
   "title":"名称",
   "parentId":"层级",
 
+  "//":"RobotInfo.jsx",
+  "Robot Info":"机器人信息",
 
   "//":"UserDetail.jsx",
   "email":"邮箱",

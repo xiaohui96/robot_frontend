@@ -55,6 +55,11 @@ const AppActions = Reflux.createActions([
             children:["retrieve","query","update","delete"]
         },
     },
+    {
+        RobotInfo:{
+            children:["create","retrieve","query","update","delete","compare"]
+        },
+    },
 ])
 
 export default AppActions;

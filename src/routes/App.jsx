@@ -24,6 +24,7 @@ import TaskDisplay from 'routes/lab/TaskDisplay';
 import MapSetting from 'routes/lab/MapSetting';
 import PatrolResult from 'routes/lab/PatrolResult';
 import RobotSetting from 'routes/lab/RobotSetting';
+import RobotInfo from 'routes/lab/RobotInfo';
 
 
 //菜单项
@@ -340,7 +341,7 @@ class App extends Reflux.Component {
                                 <Route path="/lab/mapSetting" component={MapSetting}/>
                                 <Route path="/lab/patrolResult" component={PatrolResult}/>
                                 <Route path="/lab/robotSetting" component={RobotSetting}/>
-
+                                <Route path="/lab/robotInfo" component={RobotInfo}/>
                                 {/*系统管理员的界面*/}
                                 <Route path="/admin/usersConfig" component={UsersConfig}/>
                                 <Route path="/userinfo/userDetail" component={UserDetail}/>
