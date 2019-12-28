@@ -164,6 +164,12 @@
   "//":"RobotInfo.jsx",
   "Robot Info":"机器人信息",
 
+  "//":"AlarmSetting.jsx",
+  "Alarm Threshold":"报警阈值",
+  "upValue":"阈值上限",
+  "downValue":"阈值下限",
+
+
   "//":"UserDetail.jsx",
   "email":"邮箱",
   "last login":"上次登录",

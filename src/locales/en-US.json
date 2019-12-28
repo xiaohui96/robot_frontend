@@ -161,6 +161,14 @@
   "title":"Title",
   "parentId":"ParentId",
 
+  "//":"RobotInfo.jsx",
+  "Robot Info":"Robot Info",
+
+  "//":"AlarmSetting.jsx",
+  "Alarm Threshold":"Alarm Threshold",
+  "upValue":"UpValue",
+  "downValue":"DownValue",
+
   "//":"UserDetail.jsx",
   "email":"Email",
   "last login":"Last Login",

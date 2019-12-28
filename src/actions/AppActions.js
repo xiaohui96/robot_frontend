@@ -60,6 +60,11 @@ const AppActions = Reflux.createActions([
             children:["create","retrieve","query","update","delete","compare"]
         },
     },
+    {
+        AlarmSetting:{
+            children:["create","retrieve","query","update","delete","compare"]
+        },
+    },
 ])
 
 export default AppActions;
