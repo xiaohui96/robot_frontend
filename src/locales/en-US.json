@@ -135,6 +135,7 @@
   "alarmTime":"Alarm Time",
   "alarmDescription":"Alarm Description",
   "verified":"Verified",
+  "robotName":"RobotName",
 
   "//":"OverallPatrol.jsx",
   "overall patrol":"Overall Patrol",

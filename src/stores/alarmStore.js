@@ -75,10 +75,20 @@ class AlarmStore extends Reflux.Store {
             })
     }
     onAlarmUpdate(formData,callback){
-        //console.log("test Update");
-        //console.log(formData);
-        //console.log(id);
         axios.put(`/alarmInformation/${formData.id}`, formData)
+            .then( (response) => {
+                message.success("更新成功！", 1);
+                this.onAlarmRetrieve();
+            })
+            .catch( ()=>{
+                message.error("更新失败！", 3);
+            })
+            .finally( ()=>{
+                callback?.();
+            })
+    }
+    onAlarmPatrolupdate(formData,callback){
+        axios.put(`/patrolInformation/${formData.id}`, formData)
             .then( (response) => {
                 message.success("更新成功！", 1);
                 this.onAlarmRetrieve();

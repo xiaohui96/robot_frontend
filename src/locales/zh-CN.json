@@ -133,6 +133,7 @@
   "alarmTime":"报警时间",
   "alarmDescription":"报警内容",
   "verified":"审核状态",
+  "robotName":"机器人名称",
 
   "//":"OverallPatrol.jsx",
   "overall patrol":"全面巡检",
@@ -153,6 +154,8 @@
   "recognition Time":"识别时间",
   "collect Information":"采集信息",
   "alarm Type":"告警等级",
+
+
 
   "//":"MapSetting.jsx",
   "title":"名称",

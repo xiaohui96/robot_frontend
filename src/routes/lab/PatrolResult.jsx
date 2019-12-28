@@ -146,6 +146,12 @@ class PatrolResult extends Reflux.Component {
                              filteredValue= {filteredInfo.location ? [filteredInfo.location] : null}
                              onFilter= {(value, record) => record.location.includes(value)}
                     />
+                    <Column  title={intl.get('verified')}
+                             dataIndex="verify"
+                        //搜索
+                             filteredValue= {filteredInfo.verify ? [filteredInfo.verify] : null}
+                             onFilter= {(value, record) => record.verify.includes(value)}
+                    />
                     <Column  title={intl.get('recognition Value')}
                              dataIndex="recognitionValue"
                         //搜索

@@ -42,7 +42,7 @@ const AppActions = Reflux.createActions([
   },
    {
      Alarm:{
-       children:["retrieve","query","update","delete","taskretrieve","taskupdate",'taskdelete']
+       children:["retrieve","query","update","delete","taskretrieve","taskupdate",'taskdelete',"patrolupdate"]
       },
    },
     {
