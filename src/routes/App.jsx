@@ -14,6 +14,7 @@ import appStore from 'stores/appStore';
 
 //路由页面
 import UsersConfig from 'routes/admin/UsersConfig';
+import CamerasConfig from 'routes/admin/CamerasConfig';
 
 import RobotPatrol from 'routes/lab/RobotPatrol';
 import OverallPatrol from 'routes/lab/OverallPatrol';
@@ -344,6 +345,7 @@ class App extends Reflux.Component {
                                 <Route path="/lab/robotInfo" component={RobotInfo}/>
                                 {/*系统管理员的界面*/}
                                 <Route path="/admin/usersConfig" component={UsersConfig}/>
+                                <Route path="/admin/camerasConfig" component={CamerasConfig}/>
                                 <Route path="/userinfo/userDetail" component={UserDetail}/>
                             </Switch>
                         </ErrorBoundary>

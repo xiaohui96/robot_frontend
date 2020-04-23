@@ -8,6 +8,12 @@ export default {
       nameEN: "User Config",
       path: "usersConfig",
       icon: "usersConfig"
-    }
+    },
+      {
+          nameCN: "摄像机管理",
+          nameEN: "Camera Config",
+          path: "camerasConfig",
+          icon: "camerasConfig"
+      },
   ]
 }
