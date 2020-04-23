@@ -23,7 +23,7 @@
     "@babel/polyfill": "^7.2.5",
     "antd": "3.17.0",
     "antd-mobile": "^2.2.13",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "echarts": "^4.1.0",
     "echarts-for-react": "^2.0.14",
     "enquire": "0.0.2",
