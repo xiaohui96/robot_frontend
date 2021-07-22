@@ -49,7 +49,7 @@
     "react-sublime-video": "^0.2.5",
     "reflux": "^6.4.1",
     "three": "^0.91.0",
-    "xlsx": "^0.15.2",
+    "xlsx": "^0.17.0",
     "js-export-excel": "^1.1.2"
   },
   "devDependencies": {
