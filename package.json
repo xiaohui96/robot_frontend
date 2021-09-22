@@ -27,7 +27,7 @@
     "echarts": "^4.1.0",
     "echarts-for-react": "^2.0.14",
     "enquire": "0.0.2",
-    "jointjs": "^2.2.1",
+    "jointjs": "^3.4.2",
     "js-cookie": "^2.2.0",
     "lodash": "latest",
     "qs": "latest",
